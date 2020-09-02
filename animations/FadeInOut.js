@@ -1,11 +1,18 @@
+/*
+    Here we are using opacity property of the fading object.
+    If we want fade in then we chnage opacity value from 0 to 1.
+    and if we want fade out then we change value from 1 to 0
+*/
+
 import React, { useState } from 'react';
 import {
-    StyleSheet,
     View,
     Animated,
     Button,
     Text
 } from 'react-native';
+
+import { GlobalStyles } from './GlobalStyles'
 
 function FadeInOut () {
 
@@ -30,8 +37,8 @@ function FadeInOut () {
     }
 
     return (
-        <View style={Styles._mainContainer}>
-            <Text style={Styles._heading}>Fading Animation</Text>
+        <View style={[{alignItems: 'center', justifyContent: 'center'}, GlobalStyles._mainContainer]}>
+            <Text style={GlobalStyles._heading}>Fading Animation</Text>
             <Animated.View
                 style={{
                 width: 100,
@@ -42,7 +49,7 @@ function FadeInOut () {
                 opacity: fadeValue
                 }} 
             />
-            <View style={Styles._btnView}>
+            <View style={GlobalStyles._btnView}>
                 <Button 
                 title='Fade In'
                 onPress={_fadeinAnimation}
@@ -55,26 +62,5 @@ function FadeInOut () {
         </View>
     );
 };
-
-const Styles = StyleSheet.create({
-    _mainContainer:{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    _heading:{
-        fontSize: 22,
-        fontWeight: 'bold',
-        color: 'black',
-        position: 'absolute',
-        top: 100
-    },
-    _btnView:{
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-evenly'
-    },
-});
 
 export default FadeInOut;

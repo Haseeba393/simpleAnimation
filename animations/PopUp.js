@@ -1,11 +1,17 @@
+/*
+    Here we are using three animation which are running parallel
+    to give a nice appearing effect for a popup box. In this animation
+    you will learn how to start multiple animations parallel
+*/
 import React, { useState } from 'react';
 import {
-    StyleSheet,
     View,
     Animated,
     Text,
     Button,
 } from 'react-native';
+
+import { GlobalStyles } from './GlobalStyles';
 
 function PopUp () {
 
@@ -56,8 +62,8 @@ function PopUp () {
     }
 
     return (
-        <View style={Styles._mainContainer}>
-        <Text style={Styles._heading}>PopUp Animation</Text>
+        <View style={[{alignItems: 'center', justifyContent: 'center'}, GlobalStyles._mainContainer]}>
+        <Text style={GlobalStyles._heading}>PopUp Animation</Text>
         <Animated.View 
             style={{
             width: boxWidth,
@@ -68,7 +74,7 @@ function PopUp () {
             backgroundColor: 'orange',
             }}
         />
-        <View style={Styles._btnView}>
+        <View style={GlobalStyles._btnView}>
             <Button 
             title='Show Box'
             onPress={_showBox}
@@ -81,28 +87,5 @@ function PopUp () {
         </View>
     );
 };
-
-const Styles = StyleSheet.create({
-    _mainContainer:{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    _heading:{
-        fontSize: 22,
-        fontWeight: 'bold',
-        color: 'black',
-        position: 'absolute',
-        top: 100
-    },
-    _btnView:{
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-evenly',
-        position: 'absolute',
-        bottom: 100,
-    },
-});
 
 export default PopUp;
